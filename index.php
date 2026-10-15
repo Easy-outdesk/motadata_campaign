@@ -541,7 +541,7 @@
         .compare-container {
             position: relative;
             border-radius: 24px;
-            overflow-x: auto;
+            /* overflow-x: auto; */
             -webkit-overflow-scrolling: touch;
             padding: 4px;
         }
@@ -1515,8 +1515,8 @@
                     </div>
                 </div>
 
-                <p class="proof-note">Product fit, integration scope and pricing depend on your requirements and
-                    configuration. Confirm details with Easy Outdesk.</p>
+                <!-- <p class="proof-note">Product fit, integration scope and pricing depend on your requirements and
+                    configuration. Confirm details with Easy Outdesk.</p> -->
             </div>
         </section>
 
