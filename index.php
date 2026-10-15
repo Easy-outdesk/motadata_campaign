@@ -19,6 +19,7 @@
             --navy: #071a35;
             --navy2: #0d2c4d;
             --blue: #174d83;
+            --blue-accent: #005fd6;
             --orange: #ff7a1a;
             --orange2: #ffb16f;
             --ink: #10213a;
@@ -75,10 +76,11 @@
             box-shadow: 0 0 0 5px #ff7a1a1c
         }
 
+        /* Reduced Heading Sizes */
         h1, h2, h3 {
             font-family: Manrope, sans-serif;
-            letter-spacing: -.055em;
-            line-height: 1.08;
+            letter-spacing: -.04em;
+            line-height: 1.15;
             margin-top: 0
         }
 
@@ -91,7 +93,7 @@
             gap: 12px;
             border: 1px solid transparent;
             border-radius: 999px;
-            padding: 14px 21px;
+            padding: 13px 22px;
             font-size: .86rem;
             font-weight: 800;
             cursor: pointer;
@@ -121,38 +123,30 @@
         }
 
         .header-inner {
-            height: 78px;
+            height: 84px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 24px
         }
 
+        /* Increased Brand Logo Size */
         .brand {
             display: flex;
             align-items: center;
             gap: 12px;
-            font: 800 1.05rem Manrope, sans-serif;
-            letter-spacing: -.04em
         }
 
-        .brand-mark {
-            width: 34px;
-            height: 34px;
-            display: grid;
-            place-items: center;
-            border-radius: 11px;
-            background: linear-gradient(135deg, var(--orange), #ffd0a8);
-            color: var(--navy);
-            font-size: 1.1rem
-        }
-
-        .brand small {
+        .brand-logo-img {
+            height: 50px;
+            width: auto;
+            max-width: 250px;
+            object-fit: contain;
             display: block;
-            color: #9aafc5;
-            font: 700 .55rem "DM Sans", sans-serif;
-            letter-spacing: .11em;
-            margin-top: 1px
+            transition: transform .2s ease;
+        }
+        .brand-logo-img:hover {
+            transform: scale(1.02);
         }
 
         .nav {
@@ -182,7 +176,7 @@
             overflow: hidden;
             background: radial-gradient(ellipse at 78% 35%, #16446a99 0, transparent 33%), radial-gradient(ellipse at 92% 12%, #ff7a1a20 0, transparent 28%), linear-gradient(120deg, #061326, #071c35 55%, #0b2b4b);
             color: white;
-            padding: 74px 0 62px
+            padding: 65px 0 55px
         }
 
         .hero:before {
@@ -200,18 +194,19 @@
 
         .hero-grid {
             display: grid;
-            grid-template-columns: 1.02fr .98fr;
-            gap: 52px;
+            grid-template-columns: 1.05fr .95fr;
+            gap: 48px;
             align-items: center
         }
 
-        .hero-copy { padding: 18px 0 }
+        .hero-copy { padding: 10px 0 }
 
+        /* Reduced H1 font size */
         .hero h1 {
-            font-size: clamp(3.4rem, 6.5vw, 6.25rem);
-            letter-spacing: -.085em;
-            line-height: .98;
-            margin: 23px 0
+            font-size: clamp(2.35rem, 3.8vw, 3.2rem);
+            letter-spacing: -.045em;
+            line-height: 1.12;
+            margin: 20px 0 18px
         }
 
         .hero h1 em {
@@ -223,46 +218,75 @@
         }
 
         .hero-copy>p {
-            max-width: 570px;
+            max-width: 560px;
             color: #bdcce0;
-            font-size: 1.04rem;
-            line-height: 1.8
+            font-size: 1.02rem;
+            line-height: 1.75
         }
 
-        .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 26px 0 }
+        .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 24px 0 }
 
-        .hero-points {
-            display: grid;
-            gap: 11px;
-            margin-top: 28px;
-            color: #d5e0ed;
-            font-size: .84rem
+        /* Hero partner badges: channel check + logos */
+        .hero-trust-box {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 26px;
+            padding: 12px 18px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 14px;
+            width: max-content;
+            max-width: 100%;
+            backdrop-filter: blur(8px);
         }
 
-        .hero-points span { display: flex; align-items: center; gap: 11px }
+        .hero-channel-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: .83rem;
+            font-weight: 700;
+            color: #e3edf8;
+            white-space: nowrap;
+        }
 
-        .hero-points b {
+        .hero-channel-badge b {
             display: grid;
             place-items: center;
             width: 22px;
             height: 22px;
             border-radius: 50%;
-            background: #ff7a1a22;
+            background: #ff7a1a24;
             color: #ffb16f;
             font-size: .75rem
         }
 
-        .hero-foot {
+        .hero-divider {
+            width: 1px;
+            height: 26px;
+            background: rgba(255, 255, 255, 0.18);
+        }
+
+        .hero-logos-wrap {
             display: flex;
-            justify-content: space-between;
+            align-items: center;
             gap: 16px;
-            margin-top: 22px;
-            padding-top: 17px;
-            border-top: 1px solid #ffffff20;
-            color: #88a2bc;
-            font-size: .62rem;
-            font-weight: 800;
-            letter-spacing: .12em
+        }
+
+        .hero-logos-wrap img {
+            height: 30px;
+            width: auto;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+            opacity: .88;
+            transition: opacity .2s, transform .2s;
+        }
+
+        .hero-logos-wrap img:hover {
+            opacity: 1;
+            transform: scale(1.06);
         }
 
         .trust-strip { background: #f5f7fa; border-bottom: 1px solid var(--line) }
@@ -271,7 +295,7 @@
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 20px;
-            padding: 25px 0
+            padding: 24px 0
         }
 
         .trust-item { display: flex; align-items: center; gap: 12px }
@@ -284,64 +308,65 @@
 
         .trust-item span:last-child { font-size: .72rem; line-height: 1.4; color: var(--muted) }
 
-        .section { padding: 105px 0 }
+        .section { padding: 50px 0 }
 
         .section.alt { background: var(--pale) }
 
-        .section-head { max-width: 800px; margin-bottom: 45px }
+        .section-head { max-width: 800px; margin-bottom: 38px }
 
+        /* Reduced H2 font size across all sections */
         .section-head h2 {
-            font-size: clamp(2.5rem, 4.8vw, 4.7rem);
-            letter-spacing: -.08em;
-            margin: 16px 0
+            font-size: clamp(1.85rem, 2.5vw, 2.35rem);
+            letter-spacing: -.045em;
+            margin: 14px 0 10px;
         }
 
-        .section-head p { max-width: 700px; color: var(--muted); line-height: 1.85 }
+        .section-head p { max-width: 700px; color: var(--muted); line-height: 1.8 }
 
         .benefit-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px }
 
         .benefit {
-            min-height: 265px;
+            min-height: 240px;
             border: 1px solid var(--line);
-            border-radius: 22px;
+            border-radius: 20px;
             background: white;
-            padding: 26px;
+            padding: 24px;
             transition: transform .3s var(--ease), box-shadow .3s, border-color .3s
         }
 
-        .benefit:hover { transform: translateY(-7px); box-shadow: var(--shadow); border-color: #ffb77f }
+        .benefit:hover { transform: translateY(-5px); box-shadow: var(--shadow); border-color: #ffb77f }
 
         .benefit-icon {
             display: grid;
             place-items: center;
-            width: 48px;
-            height: 48px;
-            border-radius: 15px;
+            width: 44px;
+            height: 44px;
+            border-radius: 13px;
             background: #fff0e4;
             color: #d85a0d;
-            font-size: 1.3rem
+            font-size: 1.2rem
         }
 
-        .benefit h3 { font-size: 1.23rem; margin: 24px 0 10px }
+        .benefit h3 { font-size: 1.15rem; margin: 18px 0 8px }
 
-        .benefit p { font-size: .86rem; color: var(--muted); line-height: 1.8; margin: 0 }
+        .benefit p { font-size: .85rem; color: var(--muted); line-height: 1.75; margin: 0 }
 
         .logo-panel {
             margin-top: 28px;
             border: 1px dashed #bdcbd9;
             border-radius: 20px;
-            padding: 28px;
+            padding: 26px;
             text-align: center;
             background: #fff
         }
 
-        .logo-panel strong { display: block; font: 800 1rem Manrope, sans-serif }
+        .logo-panel strong { display: block; font: 800 .95rem Manrope, sans-serif }
 
         /* ---------- CLIENT LOGO AUTO-SCROLL ---------- */
         .clients-slider {
             position: relative;
             overflow: hidden;
-            margin-top: 22px;
+            margin-top: 20px;
             -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
             mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent)
         }
@@ -352,7 +377,6 @@
             width: max-content
         }
 
-        /* animation starts only after the logos are cloned, so the loop is seamless */
         .clients-track[data-cloned="true"] {
             animation: clientsScroll 45s linear infinite;
             will-change: transform
@@ -372,7 +396,7 @@
         .client-logo img {
             width: auto;
             max-width: 150px;
-            height: 56px;
+            height: 54px;
             object-fit: contain;
             filter: grayscale(1);
             opacity: .75;
@@ -390,200 +414,442 @@
             to { transform: translateX(-50%) }
         }
 
-        .solution-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px }
+        /* ---------- SOLUTIONS: IMPROVISED DESIGN WITH REAL PRODUCT VISUALS ---------- */
+        .solution-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px }
 
         .solution {
             display: grid;
-            grid-template-columns: 1fr .75fr;
-            gap: 20px;
+            grid-template-columns: 1.05fr .95fr;
+            gap: 22px;
             align-items: center;
             min-height: 290px;
-            padding: 30px;
+            padding: 28px;
             border: 1px solid var(--line);
-            border-radius: 24px;
+            border-radius: 22px;
             background: white;
             overflow: hidden;
-            transition: transform .3s, box-shadow .3s
+            transition: transform .3s, box-shadow .3s, border-color .3s
         }
 
-        .solution:hover { transform: translateY(-5px); box-shadow: var(--shadow) }
+        .solution:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 48px rgba(7, 26, 53, 0.08);
+            border-color: #bcd4ed;
+        }
 
         .solution .n { font-size: .67rem; color: var(--orange); letter-spacing: .14em; font-weight: 900 }
 
-        .solution h3 { font-size: 1.8rem; margin: 15px 0 10px }
+        .solution h3 { font-size: 1.35rem; margin: 12px 0 10px; color: var(--navy) }
 
-        .solution p { color: var(--muted); font-size: .86rem; line-height: 1.8; margin: 0 }
+        .solution p { color: var(--muted); font-size: .86rem; line-height: 1.75; margin: 0 }
 
-        .product-visual {
-            min-height: 175px;
-            display: grid;
-            place-items: center;
-            border-radius: 18px;
-            background: radial-gradient(circle at 50% 40%, #194c72, #06172b);
-            padding: 15px;
+        /* Improvised Image Container */
+        .product-visual-box {
             position: relative;
-            overflow: hidden
-        }
-
-        .product-visual:before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background-image: linear-gradient(#8bc8e817 1px, transparent 1px), linear-gradient(90deg, #8bc8e817 1px, transparent 1px);
-            background-size: 19px 19px;
-            mask-image: radial-gradient(ellipse, #000, transparent 80%)
-        }
-
-        .mini-dashboard {
-            position: relative;
-            z-index: 1;
-            width: 100%;
-            padding: 11px;
-            border: 1px solid #ffffff2c;
-            border-radius: 10px;
-            background: #061326d9
-        }
-
-        .mini-top { height: 6px; width: 44%; background: #ff8b37; border-radius: 9px; margin-bottom: 10px }
-
-        .bars { display: grid; gap: 6px }
-
-        .bars i { height: 7px; border-radius: 3px; background: #36a6cf }
-
-        .bars i:nth-child(2) { width: 76% }
-
-        .bars i:nth-child(3) { width: 55% }
-
-        .bars i:nth-child(4) { width: 86% }
-
-        .service-visual { display: grid; gap: 8px; position: relative; z-index: 1; width: 100% }
-
-        .service-visual i {
+            min-height: 180px;
+            height: 100%;
             display: flex;
             align-items: center;
-            gap: 8px;
-            border: 1px solid #ffffff28;
-            border-radius: 8px;
-            background: #071b31e8;
-            padding: 9px;
-            color: #cfe1ef;
-            font-size: .56rem;
-            font-style: normal
+            justify-content: center;
+            border-radius: 16px;
+            /* background: linear-gradient(145deg, #092140, #041427); */
+            padding: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.15), 0 12px 28px rgba(0, 0, 0, 0.22);
         }
 
-        .service-visual i:before {
-            content: "✓";
-            display: grid;
-            place-items: center;
-            width: 17px;
-            height: 17px;
-            border-radius: 5px;
-            background: #ff7a1a;
-            color: #071a35;
-            font-weight: 900
+        .product-visual-box img {
+  width: 100%;
+    height: 100%;
+    object-fit: fill;
+    object-position: center top;
+    border-radius: 10px;
+    transition: transform .4s var(--ease);
+    display: block;
         }
 
-        .inline-cta { margin-top: 26px }
+        .solution:hover .product-visual-box img {
+            transform: scale(1.04);
+        }
+
+        .inline-cta { margin-top: 22px }
 
         .usp-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px }
 
         .usp {
             display: flex;
-            gap: 17px;
-            padding: 24px;
+            gap: 16px;
+            padding: 22px;
             border: 1px solid var(--line);
             border-radius: 20px;
             background: white
         }
 
         .usp-num {
-            flex: 0 0 42px;
-            width: 42px;
-            height: 42px;
+            flex: 0 0 40px;
+            width: 40px;
+            height: 40px;
             display: grid;
             place-items: center;
-            border-radius: 13px;
+            border-radius: 12px;
             background: #fff0e4;
             color: #d85a0d;
             font: 800 .8rem Manrope, sans-serif
         }
 
-        .usp h3 { font-size: 1.12rem; margin: 2px 0 8px }
+        .usp h3 { font-size: 1.08rem; margin: 2px 0 6px }
 
-        .usp p { font-size: .84rem; color: var(--muted); line-height: 1.8; margin: 0 }
+        .usp p { font-size: .84rem; color: var(--muted); line-height: 1.75; margin: 0 }
 
-        .compare-wrap {
+        /* ---------- IMPROVISED COMPARISON SECTION ---------- */
+        .compare-section {
+            padding: 0px 0 95px;
+            background: #ffffff;
+        }
+
+        .compare-head {
+            margin-bottom: 35px;
+        }
+
+        .compare-head h2 {
+            font-size: clamp(2rem, 2.8vw, 2.7rem);
+            letter-spacing: -.05em;
+            margin: 6px 0 12px;
+            color: var(--navy);
+        }
+
+        .compare-head h2 span {
+            color: var(--blue-accent);
+        }
+
+        .compare-head .compare-eyebrow {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: #071a35;
+            margin: 0 0 6px;
+            letter-spacing: -.02em;
+        }
+
+        .compare-head p {
+            font-size: .95rem;
+            color: var(--muted);
+            margin: 0;
+            max-width: 650px;
+        }
+
+        .compare-container {
+            position: relative;
+            border-radius: 24px;
             overflow-x: auto;
-            border: 1px solid var(--line);
+            -webkit-overflow-scrolling: touch;
+            padding: 4px;
+        }
+
+        .compare-grid {
+            display: grid;
+            grid-template-columns: 240px 1.25fr 1fr;
+            min-width: 860px;
+            background: #fff;
+            border-radius: 22px;
+            border: 1px solid #e2ebf5;
+        }
+
+        /* Column 1: Categories */
+        .col-categories {
+            background: #fbfdff;
+            border-right: 1px solid #e8f0f8;
+            border-radius: 22px 0 0 22px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .col-categories-header {
+            height: 98px;
+            padding: 24px 22px;
+            display: flex;
+            align-items: flex-end;
+            font: 800 1.1rem Manrope, sans-serif;
+            color: #071a35;
+            letter-spacing: -.03em;
+            border-bottom: 1px solid #e8f0f8;
+        }
+
+        .cat-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 26px 22px;
+            border-bottom: 1px solid #eef4fb;
+            min-height: 104px;
+        }
+
+        .cat-item:last-child {
+            border-bottom: none;
+        }
+
+        .cat-icon-badge {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: #eaf3fe;
+            display: grid;
+            place-items: center;
+            color: var(--blue-accent);
+            flex-shrink: 0;
+        }
+
+        .cat-icon-badge svg {
+            width: 22px;
+            height: 22px;
+            stroke-width: 2;
+        }
+
+        .cat-name {
+            font: 800 .98rem Manrope, sans-serif;
+            color: #071a35;
+            letter-spacing: -.02em;
+        }
+
+        /* Column 2: Featured Motadata with Easy Outdesk */
+        .col-featured {
+            background: #f3f8fe;
             border-radius: 20px;
-            background: white;
-            box-shadow: 0 12px 40px #071a3509
+            border: 2px solid var(--blue-accent);
+            box-shadow: 0 16px 45px rgba(0, 95, 214, 0.12);
+            position: relative;
+            z-index: 2;
+            margin: -6px -2px -6px -2px;
+            display: flex;
+            flex-direction: column;
         }
 
-        .compare { width: 100%; border-collapse: collapse; min-width: 650px }
-
-        .compare th, .compare td {
-            padding: 21px 24px;
-            text-align: left;
-            border-bottom: 1px solid var(--line);
-            font-size: .86rem
+        .col-featured-header {
+            background: linear-gradient(135deg, #005fd6, #004bbb);
+            color: #ffffff;
+            padding: 18px 24px;
+            border-radius: 17px 17px 0 0;
+            text-align: center;
+            height: 104px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
-        .compare th {
-            background: #0b2a49;
-            color: white;
-            font: 800 .78rem Manrope, sans-serif;
-            letter-spacing: .04em
+        .featured-brand-strip {
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
-        .compare th:nth-child(2) { background: #174d83 }
+        .feat-motadata {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font: 800 1.25rem Manrope, sans-serif;
+            letter-spacing: -.04em;
+            color: #ffffff;
+        }
 
-        .compare td:first-child { font-weight: 800; color: var(--navy); width: 22% }
+        .feat-motadata svg {
+            width: 24px;
+            height: 24px;
+        }
 
-        .compare td:nth-child(2) { font-weight: 700; color: #174d83; background: #f5f8fc }
+        .feat-divider {
+            width: 1.5px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.4);
+        }
 
-        .compare tr:last-child td { border-bottom: 0 }
+        .feat-eod {
+            font: 700 1.05rem Manrope, sans-serif;
+            letter-spacing: -.03em;
+            color: #ffffff;
+            opacity: .95;
+        }
 
-        .proof-note { margin-top: 14px; font-size: .74rem; color: var(--muted) }
+        .featured-sub {
+            font-size: .84rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-top: 5px;
+            font-weight: 500;
+        }
 
+        .feat-row {
+            display: grid;
+            grid-template-columns: 60px 28px 1fr;
+            align-items: center;
+            gap: 14px;
+            padding: 18px 24px;
+            border-bottom: 1px solid #dce8f7;
+            min-height: 104px;
+        }
+
+        .feat-row:last-child {
+            border-bottom: none;
+        }
+
+        .feat-illu {
+            width: 56px;
+            height: 52px;
+            display: grid;
+            place-items: center;
+        }
+
+        .feat-illu svg {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .feat-check {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: var(--blue-accent);
+            color: #ffffff;
+            display: grid;
+            place-items: center;
+            font-weight: 900;
+            font-size: .78rem;
+            box-shadow: 0 4px 10px rgba(0, 95, 214, 0.3);
+            flex-shrink: 0;
+        }
+
+        .feat-content strong {
+            display: block;
+            font: 800 .94rem Manrope, sans-serif;
+            color: #071a35;
+            letter-spacing: -.02em;
+            margin-bottom: 3px;
+        }
+
+        .feat-content span {
+            display: block;
+            font-size: .8rem;
+            line-height: 1.45;
+            color: #556982;
+        }
+
+        /* Column 3: Separate Tools */
+        .col-separate {
+            background: #fff8f6;
+            border-radius: 0 22px 22px 0;
+            display: flex;
+            flex-direction: column;
+            border-left: 1px solid #f9e2dc;
+        }
+
+        .col-separate-header {
+            height: 98px;
+            padding: 24px 24px;
+            display: flex;
+            align-items: flex-end;
+            font: 800 1.1rem Manrope, sans-serif;
+            color: #071a35;
+            letter-spacing: -.03em;
+            border-bottom: 1px solid #f9ded8;
+        }
+
+        .sep-row {
+            display: grid;
+            grid-template-columns: 28px 1fr 50px;
+            align-items: center;
+            gap: 14px;
+            padding: 18px 24px;
+            border-bottom: 1px solid #fce8e3;
+            min-height: 104px;
+        }
+
+        .sep-row:last-child {
+            border-bottom: none;
+        }
+
+        .sep-cross {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #f87171;
+            color: #ffffff;
+            display: grid;
+            place-items: center;
+            font-weight: 900;
+            font-size: .72rem;
+            flex-shrink: 0;
+        }
+
+        .sep-content strong {
+            display: block;
+            font: 800 .92rem Manrope, sans-serif;
+            color: #10213a;
+            letter-spacing: -.02em;
+            margin-bottom: 3px;
+        }
+
+        .sep-content span {
+            display: block;
+            font-size: .8rem;
+            line-height: 1.45;
+            color: #748496;
+        }
+
+        .sep-illu {
+            width: 48px;
+            height: 48px;
+            display: grid;
+            place-items: center;
+            opacity: .65;
+        }
+
+        .sep-illu svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .proof-note { margin-top: 18px; font-size: .74rem; color: var(--muted) }
+
+        /* ---------- FINAL CTA ---------- */
         .final-cta {
-            padding: 85px 0;
+            padding: 72px 0;
             background: radial-gradient(ellipse at 90% 0%, #244f7c 0, transparent 35%), linear-gradient(115deg, #06152b, #0e3963);
             color: white
         }
 
-        .cta-inner { display: flex; justify-content: space-between; align-items: center; gap: 45px }
+        .cta-inner { display: flex; justify-content: space-between; align-items: center; gap: 40px }
 
+        /* Reduced Final CTA H2 */
         .cta-inner h2 {
-            max-width: 800px;
-            font-size: clamp(2.7rem, 5.4vw, 5rem);
-            letter-spacing: -.08em;
-            margin: 15px 0
+            max-width: 780px;
+            font-size: clamp(2.1rem, 3.4vw, 2.9rem);
+            letter-spacing: -.045em;
+            margin: 12px 0
         }
 
-        .cta-inner p { max-width: 690px; color: #b9cadd; line-height: 1.8; margin: 0 }
+        .cta-inner p { max-width: 680px; color: #b9cadd; line-height: 1.75; margin: 0 }
 
         /* ---------- FORM ---------- */
         .lead-form {
-            padding: 30px;
+            padding: 28px;
             border: 1px solid var(--line);
-            border-radius: 24px;
+            border-radius: 22px;
             background: white;
             color: var(--ink);
             box-shadow: 0 25px 70px #0000002e
         }
 
-        .form-intro { margin-bottom: 22px }
+        .form-intro { margin-bottom: 20px }
 
-        .form-intro h3 { font-size: 1.45rem; margin: 0 0 7px }
+        .form-intro h3 { font-size: 1.35rem; margin: 0 0 6px }
 
         .form-intro p { color: var(--muted); font-size: .85rem; margin: 0 }
 
         .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 15px }
 
-        .field { margin-bottom: 15px }
+        .field { margin-bottom: 14px }
 
-        .field label { display: block; margin-bottom: 6px; color: #253750; font-size: .77rem; font-weight: 800 }
+        .field label { display: block; margin-bottom: 5px; color: #253750; font-size: .76rem; font-weight: 800 }
 
         .field label span { color: #d94e15 }
 
@@ -591,7 +857,7 @@
             width: 100%;
             border: 1px solid #d9e2ed;
             border-radius: 11px;
-            padding: 12px 13px;
+            padding: 11px 13px;
             background: #fbfcfe;
             color: var(--ink);
             font-size: .84rem;
@@ -604,7 +870,7 @@
             box-shadow: 0 0 0 3px #ff7a1a1c
         }
 
-        .field textarea { min-height: 100px; resize: vertical }
+        .field textarea { min-height: 95px; resize: vertical }
 
         .form-status {
             font-size: .82rem;
@@ -633,24 +899,24 @@
 
         @keyframes spin { to { transform: rotate(360deg) } }
 
-        .footer { background: #040e1e; color: #c0cede; padding: 48px 0 22px }
+        .footer { background: #040e1e; color: #c0cede; padding: 45px 0 22px }
 
         .footer-top {
             display: flex;
             justify-content: space-between;
             gap: 35px;
-            padding-bottom: 30px;
+            padding-bottom: 28px;
             border-bottom: 1px solid #ffffff1b
         }
 
         .footer-about { max-width: 430px }
 
-        .footer-about p { color: #91a3ba; font-size: .8rem; margin: 14px 0 0 }
+        .footer-about p { color: #91a3ba; font-size: .8rem; margin: 12px 0 0 }
 
         .footer-links {
             display: flex;
             flex-wrap: wrap;
-            gap: 22px;
+            gap: 20px;
             align-content: flex-start;
             font-size: .8rem
         }
@@ -671,27 +937,28 @@
 
         .mobile-cta { display: none }
 
-        .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s var(--ease), transform .7s var(--ease) }
+        .reveal { opacity: 0; transform: translateY(20px); transition: opacity .65s var(--ease), transform .65s var(--ease) }
 
         .reveal.visible { opacity: 1; transform: none }
 
         @media(max-width:1000px) {
-            .hero-grid { grid-template-columns: 1fr; gap: 10px }
-            .hero-copy { padding-top: 30px }
+            .hero-grid { grid-template-columns: 1fr; gap: 16px }
+            .hero-copy { padding-top: 20px }
             .benefit-grid { grid-template-columns: repeat(2, 1fr) }
             .trust-inner { grid-template-columns: repeat(2, 1fr) }
-            .solution { grid-template-columns: 1fr .65fr }
-            .section { padding: 85px 0 }
+            .solution { grid-template-columns: 1fr .85fr }
+            .section { padding: 75px 0 }
         }
 
         @media(max-width:700px) {
             .wrap { width: calc(100% - 32px) }
-            .header-inner { height: 70px }
+            .header-inner { height: 72px }
+            .brand-logo-img { height: 38px; }
             .menu-toggle { display: block }
             .nav {
                 display: none;
                 position: absolute;
-                top: 70px;
+                top: 72px;
                 left: 16px;
                 right: 16px;
                 align-items: stretch;
@@ -706,28 +973,25 @@
             .nav.open { display: flex }
             .nav a:not(.btn) { padding: 12px 8px }
             .nav .btn { margin-top: 8px }
-            .brand { font-size: .92rem }
-            .brand small { font-size: .48rem }
-            .hero { padding: 42px 0 26px }
-            .hero h1 { font-size: clamp(3.1rem, 14vw, 4.6rem) }
+            .hero { padding: 38px 0 24px }
+            .hero h1 { font-size: clamp(2.1rem, 9.5vw, 2.8rem) }
             .hero-copy>p { font-size: .94rem }
-            .hero-foot { font-size: .49rem; letter-spacing: .06em }
-            .trust-inner { gap: 17px; padding: 20px 0 }
-            .trust-num { font-size: 1.2rem }
+            .trust-inner { gap: 16px; padding: 18px 0 }
+            .trust-num { font-size: 1.25rem }
             .trust-item span:last-child { font-size: .65rem }
-            .section { padding: 72px 0 }
-            .section-head h2 { font-size: clamp(2.4rem, 11vw, 3.5rem) }
+            .section { padding: 65px 0 }
+            .section-head h2 { font-size: clamp(1.75rem, 7.5vw, 2.2rem) }
             .benefit-grid, .solution-grid, .usp-grid { grid-template-columns: 1fr }
             .benefit { min-height: unset }
             .solution { grid-template-columns: 1fr; padding: 22px }
-            .product-visual { min-height: 150px; order: -1 }
-            .solution h3 { font-size: 1.6rem }
+            .product-visual-box { min-height: 180px; order: -1 }
+            .solution h3 { font-size: 1.25rem }
             .client-logo { width: 150px; padding: 0 14px }
             .client-logo img { height: 46px; max-width: 120px }
-            .cta-inner { align-items: flex-start; flex-direction: column; gap: 25px }
-            .final-cta { padding: 68px 0 }
-            .cta-inner h2 { font-size: clamp(2.7rem, 12vw, 4rem) }
-            .lead-form { padding: 21px }
+            .cta-inner { align-items: flex-start; flex-direction: column; gap: 20px }
+            .final-cta { padding: 60px 0 }
+            .cta-inner h2 { font-size: clamp(1.9rem, 8vw, 2.4rem) }
+            .lead-form { padding: 20px }
             .form-grid { grid-template-columns: 1fr }
             .footer-top { flex-direction: column }
             .footer-links { gap: 15px }
@@ -760,7 +1024,10 @@
 
     <header class="site-header">
         <div class="wrap header-inner">
-            <a class="brand" href="#top" aria-label="Easy Outdesk and Motadata home"><img src="assets/images/motadata_eod.png" alt="Easy Outdesk and Motadata"></a>
+            <a class="brand" href="#top" aria-label="Easy Outdesk and Motadata home">
+                <!-- Increased logo size -->
+                <img src="assets/images/motadata_eod.png" alt="Easy Outdesk and Motadata" class="brand-logo-img">
+            </a>
             <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav"
                 aria-label="Open navigation">☰</button>
             <nav class="nav" id="primary-nav" aria-label="Main navigation"><a href="#why">Why Motadata</a><a
@@ -779,9 +1046,18 @@
                     <div class="hero-actions"><a class="btn btn-primary" href="#demo-form">Request a product demo
                             <span>↗</span></a><a class="btn btn-secondary" href="#solutions">Explore solutions ↓</a>
                     </div>
-                    <div class="hero-points"><span><b>✓</b> Official local distribution channel</span><span><b>✓</b>
-                            Solutions for IT operations and service management</span><span><b>✓</b> Product demo and
-                            business requirements discussion</span></div>
+                    
+                    <!-- Clean channel badge + MDEC & MD Digital Logos -->
+                    <div class="hero-trust-box">
+                        <div class="hero-channel-badge">
+                            <b>✓</b> Official local distribution channel
+                        </div>
+                        <div class="hero-divider"></div>
+                        <div class="hero-logos-wrap">
+                            <img src="assets/images/mdac.png" alt="MDEC Malaysia Digital Economy Corporation" title="MDEC">
+                            <img src="assets/images/md_digital.png" alt="Malaysia Digital" title="Malaysia Digital">
+                        </div>
+                    </div>
                 </div>
 
                 <form class="lead-form reveal" id="demo-form" novalidate>
@@ -827,8 +1103,6 @@
                     <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
                 </form>
             </div>
-            <div class="wrap hero-foot"><span>01 — VISIBILITY</span><span>02 — SERVICE MANAGEMENT</span><span>03 — LOCAL
-                    ACCESS</span><span>SCROLL TO EXPLORE ↓</span></div>
         </section>
 
         <section class="trust-strip" aria-label="Motadata company statistics">
@@ -916,6 +1190,7 @@
             </div>
         </section>
 
+        <!-- Solutions: Improvised with real Motadata product graphics -->
         <section class="section alt" id="solutions">
             <div class="wrap">
                 <div class="section-head reveal"><span class="eyebrow">Explore Motadata solutions</span>
@@ -928,30 +1203,29 @@
                         <div><span class="n">01 / MONITORING</span>
                             <h3>IT Infrastructure Monitoring | ObserveOps</h3>
                             <p>Monitor network performance, servers, infrastructure, applications, and logs to gain
-                                better visibility into your IT environment.</p><a class="btn btn-primary inline-cta"
-                                href="#demo-form">Discuss ObserveOps ↗</a>
+                                better visibility into your IT environment.</p>
+                            <!-- <a class="btn btn-primary inline-cta" href="#demo-form">Discuss ObserveOps ↗</a> -->
                         </div>
-                        <div class="product-visual" aria-label="Illustrative infrastructure monitoring dashboard">
-                            <div class="mini-dashboard">
-                                <div class="mini-top"></div>
-                                <div class="bars"><i></i><i></i><i></i><i></i></div>
-                            </div>
+                        <div class="product-visual-box" aria-label="ObserveOps Network Observability Dashboard">
+                            <img src="assets/images/observeops_network_observability.webp"
+                                alt="Motadata ObserveOps Network Observability" loading="lazy">
                         </div>
                     </article>
+
                     <article class="solution reveal">
                         <div><span class="n">02 / SERVICE MANAGEMENT</span>
                             <h3>IT Service Management | ServiceOps</h3>
                             <p>Manage IT service requests, incidents, assets, and service workflows through an ITSM
-                                platform designed for IT support teams.</p><a class="btn btn-primary inline-cta"
-                                href="#demo-form">Discuss ServiceOps ↗</a>
+                                platform designed for IT support teams.</p>
+                            <!-- <a class="btn btn-primary inline-cta" href="#demo-form">Discuss ServiceOps ↗</a> -->
                         </div>
-                        <div class="product-visual" aria-label="Illustrative IT service workflow">
-                            <div class="service-visual"><i>Service request received</i><i>Incident
-                                    assigned</i><i>Workflow updated</i></div>
+                        <div class="product-visual-box" aria-label="ServiceOps ITSM & Patch Deployment">
+                            <img src="assets/images/serviceops_patch_deployment.webp"
+                                alt="Motadata ServiceOps ITSM & Workflow" loading="lazy">
                         </div>
                     </article>
                 </div>
-                <div class="inline-cta"><a class="btn btn-primary" href="#demo-form">Request a product demo ↗</a></div>
+                <div class="inline-cta" style="margin-top:28px;"><a class="btn btn-primary" href="#demo-form">Request a product demo ↗</a></div>
             </div>
         </section>
 
@@ -1001,52 +1275,252 @@
             </div>
         </section>
 
-        <section class="section alt" id="compare">
+        <!-- Improvised Comparison Section matching screenshot design -->
+        <section class="compare-section" id="compare">
             <div class="wrap">
-                <div class="section-head reveal"><span class="eyebrow">A smarter approach</span>
-                    <h2>IT monitoring and service management, considered together.</h2>
-                    <p>Compare how Motadata can help simplify IT operations, connect workflows, and give your team
-                        greater visibility.</p>
+                <div class="compare-head reveal">
+                    <h2>How We <span>Compare.</span></h2>
+                    <p class="compare-eyebrow">A Smarter Approach</p>
+                    <p>See how Motadata with Easy Outdesk delivers greater value compared to using separate tools.</p>
                 </div>
-                <div class="compare-wrap reveal">
-                    <table class="compare">
-                        <thead>
-                            <tr>
-                                <th>What matters</th>
-                                <th>Motadata</th>
-                                <th>Separate tools</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>IT operations</td>
-                                <td>Connected monitoring and ITSM</td>
-                                <td>Multiple platforms to manage</td>
-                            </tr>
-                            <tr>
-                                <td>Integration</td>
-                                <td>ObserveOps + ServiceOps integration</td>
-                                <td>Integration requirements vary</td>
-                            </tr>
-                            <tr>
-                                <td>Cost</td>
-                                <td>Pricing tailored to your requirements</td>
-                                <td>Costs may span multiple licences</td>
-                            </tr>
-                            <tr>
-                                <td>Local access</td>
-                                <td>Sole distributor in Malaysia</td>
-                                <td>Depends on the vendor</td>
-                            </tr>
-                        </tbody>
-                    </table>
+
+                <div class="compare-container reveal">
+                    <div class="compare-grid">
+                        
+                        <!-- Col 1: What matters -->
+                        <div class="col-categories">
+                            <div class="col-categories-header">
+                                What matters
+                            </div>
+                            
+                            <!-- IT Operations -->
+                            <div class="cat-item">
+                                <div class="cat-icon-badge" title="IT operations">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <rect x="2" y="3" width="20" height="14" rx="2" />
+                                        <line x1="8" y1="21" x2="16" y2="21" />
+                                        <line x1="12" y1="17" x2="12" y2="21" />
+                                        <path d="m6 11 3-3 3 3 5-5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </div>
+                                <div class="cat-name">IT operations</div>
+                            </div>
+
+                            <!-- Integration -->
+                            <div class="cat-item">
+                                <div class="cat-icon-badge" title="Integration">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <circle cx="12" cy="12" r="3" />
+                                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </div>
+                                <div class="cat-name">Integration</div>
+                            </div>
+
+                            <!-- Cost -->
+                            <div class="cat-item">
+                                <div class="cat-icon-badge" title="Cost">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <ellipse cx="12" cy="5" rx="9" ry="3" />
+                                        <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
+                                        <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
+                                    </svg>
+                                </div>
+                                <div class="cat-name">Cost</div>
+                            </div>
+
+                            <!-- Local access -->
+                            <div class="cat-item">
+                                <div class="cat-icon-badge" title="Local access">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                        <circle cx="12" cy="10" r="3" />
+                                    </svg>
+                                </div>
+                                <div class="cat-name">Local access</div>
+                            </div>
+                        </div>
+
+                        <!-- Col 2: Featured Motadata with Easy Outdesk -->
+                        <div class="col-featured">
+                            <div class="col-featured-header">
+                                <div class="featured-brand-strip">
+                                    <span class="feat-motadata">
+                                        <svg viewBox="0 0 26 26" fill="none">
+                                            <circle cx="6" cy="16" r="2" fill="#ffffff" />
+                                            <circle cx="9" cy="11" r="2.2" fill="#ffffff" />
+                                            <circle cx="14" cy="8" r="2.5" fill="#ffffff" />
+                                            <circle cx="19" cy="11" r="2.2" fill="#ffffff" />
+                                            <circle cx="22" cy="16" r="2" fill="#ffffff" />
+                                        </svg>
+                                        motadata
+                                    </span>
+                                    <span class="feat-divider"></span>
+                                    <span class="feat-eod">easy outdesk</span>
+                                </div>
+                                <div class="featured-sub">Motadata with Easy Outdesk</div>
+                            </div>
+
+                            <!-- Row 1: Operations -->
+                            <div class="feat-row">
+                                <div class="feat-illu">
+                                    <!-- 3D Cloud + Screens SVG -->
+                                    <svg viewBox="0 0 54 44" fill="none">
+                                        <path d="M38 18a8 8 0 0 0-15.3-3.2A6 6 0 0 0 14 20a6 6 0 0 0 2 11.7h22A7.3 7.3 0 0 0 38 18z" fill="#005fd6" fill-opacity=".9"/>
+                                        <rect x="5" y="19" width="18" height="13" rx="2" fill="#2d87ff" stroke="#ffffff" stroke-width="1.2"/>
+                                        <line x1="8" y1="23" x2="16" y2="23" stroke="#fff" stroke-width="1.2"/>
+                                        <line x1="8" y1="26" x2="19" y2="26" stroke="#cbe2ff" stroke-width="1.2"/>
+                                        <rect x="19" y="15" width="22" height="17" rx="3" fill="#004bbb" stroke="#ffffff" stroke-width="1.5"/>
+                                        <rect x="23" y="19" width="4" height="7" fill="#60a5fa" rx="1"/>
+                                        <rect x="29" y="21" width="4" height="5" fill="#93c5fd" rx="1"/>
+                                        <rect x="35" y="17" width="3" height="9" fill="#38bdf8" rx="1"/>
+                                    </svg>
+                                </div>
+                                <div class="feat-check">✓</div>
+                                <div class="feat-content">
+                                    <strong>Connected monitoring and ITSM</strong>
+                                    <span>Single platform for infrastructure, applications and service management.</span>
+                                </div>
+                            </div>
+
+                            <!-- Row 2: Integration -->
+                            <div class="feat-row">
+                                <div class="feat-illu">
+                                    <!-- 3D Connected Puzzle Pieces SVG -->
+                                    <svg viewBox="0 0 54 44" fill="none">
+                                        <path d="M12 14h8v2a3 3 0 0 0 6 0v-2h8v8h-2a3 3 0 0 0 0 6h2v8H12z" fill="#005fd6" rx="3"/>
+                                        <path d="M26 12h14v8h2a3 3 0 0 1 0 6h-2v8H26v-2a3 3 0 0 0-6 0v2h-2V26h2a3 3 0 0 0 0-6h-2V12h8z" fill="#93c5fd" fill-opacity=".85"/>
+                                    </svg>
+                                </div>
+                                <div class="feat-check">✓</div>
+                                <div class="feat-content">
+                                    <strong>ObserveOps + ServiceOps integration</strong>
+                                    <span>Seamless integration for better visibility and faster resolution.</span>
+                                </div>
+                            </div>
+
+                            <!-- Row 3: Cost -->
+                            <div class="feat-row">
+                                <div class="feat-illu">
+                                    <!-- 3D Growth Trend & Coins SVG -->
+                                    <svg viewBox="0 0 54 44" fill="none">
+                                        <ellipse cx="14" cy="34" rx="7" ry="2.8" fill="#93c5fd"/>
+                                        <ellipse cx="14" cy="30" rx="7" ry="2.8" fill="#60a5fa"/>
+                                        <ellipse cx="14" cy="26" rx="7" ry="2.8" fill="#2563eb"/>
+                                        <rect x="24" y="22" width="6" height="15" rx="1.5" fill="#3b82f6"/>
+                                        <rect x="33" y="15" width="6" height="22" rx="1.5" fill="#1d4ed8"/>
+                                        <rect x="42" y="8" width="6" height="29" rx="1.5" fill="#005fd6"/>
+                                        <path d="m20 18 8-7 9 4 11-10" stroke="#005fd6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <div class="feat-check">✓</div>
+                                <div class="feat-content">
+                                    <strong>Pricing tailored to your requirements</strong>
+                                    <span>Flexible plans for businesses of all sizes.</span>
+                                </div>
+                            </div>
+
+                            <!-- Row 4: Local Access -->
+                            <div class="feat-row">
+                                <div class="feat-illu">
+                                    <!-- 3D Location Marker on Map SVG -->
+                                    <svg viewBox="0 0 54 44" fill="none">
+                                        <path d="m9 27 12-4 12 4 12-4v12l-12 4-12-4-12 4V27z" fill="#dbeafe" stroke="#93c5fd" stroke-width="1.2"/>
+                                        <circle cx="27" cy="16" r="8" fill="#005fd6"/>
+                                        <path d="M27 28c-4-4.5-8-8.5-8-12a8 8 0 1 1 16 0c0 3.5-4 7.5-8 12z" fill="#005fd6"/>
+                                        <circle cx="27" cy="16" r="3" fill="#ffffff"/>
+                                    </svg>
+                                </div>
+                                <div class="feat-check">✓</div>
+                                <div class="feat-content">
+                                    <strong>Sole distributor in Malaysia</strong>
+                                    <span>Local support, implementation and training.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Col 3: Separate tools -->
+                        <div class="col-separate">
+                            <div class="col-separate-header">
+                                Separate tools
+                            </div>
+
+                            <!-- Row 1: Separate Ops -->
+                            <div class="sep-row">
+                                <div class="sep-cross">✕</div>
+                                <div class="sep-content">
+                                    <strong>Multiple platforms to manage</strong>
+                                    <span>Use different tools for monitoring and ITSM.</span>
+                                </div>
+                                <div class="sep-illu" title="Fragmented tools">
+                                    <svg viewBox="0 0 44 44" fill="none" stroke="#94a3b8" stroke-width="1.5">
+                                        <rect x="4" y="6" width="22" height="15" rx="2" fill="#fff" />
+                                        <rect x="14" y="16" width="22" height="15" rx="2" fill="#fff" />
+                                        <line x1="8" y1="10" x2="16" y2="10" />
+                                        <line x1="18" y1="20" x2="26" y2="20" />
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <!-- Row 2: Integration -->
+                            <div class="sep-row">
+                                <div class="sep-cross">✕</div>
+                                <div class="sep-content">
+                                    <strong>Integration requirements vary</strong>
+                                    <span>Complex and time-consuming integrations.</span>
+                                </div>
+                                <div class="sep-illu" title="Mismatched integrations">
+                                    <svg viewBox="0 0 44 44" fill="none" stroke="#94a3b8" stroke-width="1.5">
+                                        <circle cx="14" cy="18" r="8" stroke-dasharray="2 2" />
+                                        <circle cx="30" cy="26" r="8" stroke-dasharray="2 2" />
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <!-- Row 3: Cost -->
+                            <div class="sep-row">
+                                <div class="sep-cross">✕</div>
+                                <div class="sep-content">
+                                    <strong>Costs may span multiple licences</strong>
+                                    <span>Higher overall cost with separate tools.</span>
+                                </div>
+                                <div class="sep-illu" title="Multiple license costs">
+                                    <svg viewBox="0 0 44 44" fill="none" stroke="#94a3b8" stroke-width="1.5">
+                                        <ellipse cx="14" cy="22" rx="8" ry="3" />
+                                        <ellipse cx="30" cy="28" rx="8" ry="3" />
+                                        <path d="M6 22v6c0 1.6 3.6 3 8 3s8-1.4 8-3v-6" />
+                                        <path d="M22 28v6c0 1.6 3.6 3 8 3s8-1.4 8-3v-6" />
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <!-- Row 4: Support -->
+                            <div class="sep-row">
+                                <div class="sep-cross">✕</div>
+                                <div class="sep-content">
+                                    <strong>Depends on the vendor</strong>
+                                    <span>Limited local support and longer response time.</span>
+                                </div>
+                                <div class="sep-illu" title="Remote/unresponsive vendor support">
+                                    <svg viewBox="0 0 44 44" fill="none" stroke="#94a3b8" stroke-width="1.6">
+                                        <path d="M12 24v-4a10 10 0 0 1 20 0v4" />
+                                        <rect x="8" y="22" width="6" height="8" rx="2" />
+                                        <rect x="30" y="22" width="6" height="8" rx="2" />
+                                        <path d="M33 30v2a5 5 0 0 1-5 5h-4" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
+
                 <p class="proof-note">Product fit, integration scope and pricing depend on your requirements and
                     configuration. Confirm details with Easy Outdesk.</p>
             </div>
         </section>
 
-        <section class="final-cta" id="contact">
+        <!-- <section class="final-cta" id="contact">
             <div class="wrap cta-inner">
                 <div><span class="eyebrow">Start with a conversation</span>
                     <h2>Find the right Motadata solution for your IT environment.</h2>
@@ -1055,13 +1529,16 @@
                         organisation.</p>
                 </div><a class="btn btn-primary" href="#demo-form">Request a demo ↗</a>
             </div>
-        </section>
+        </section> -->
     </main>
 
     <footer class="footer">
         <div class="wrap">
             <div class="footer-top">
-                <div class="footer-about"><a class="brand" href="#top"><img src="assets/images/motadata_eod.png" alt="Easy Outdesk and Motadata"></a>
+                <div class="footer-about">
+                    <a class="brand" href="#top">
+                        <img src="assets/images/motadata_eod.png" alt="Easy Outdesk and Motadata" style="height:44px; width:auto; max-width:220px; object-fit:contain;">
+                    </a>
                     <p>Explore Motadata network monitoring and IT service management solutions through Easy Outdesk, the
                         sole distributor of Motadata in Malaysia.</p>
                 </div>
@@ -1138,7 +1615,7 @@
     }
 
     // --------------------------------------------------
-    // 3. DEMO FORM -> BACKEND API (same flow as Odoo form)
+    // 3. DEMO FORM -> BACKEND API
     // --------------------------------------------------
     const demoForm = document.getElementById('demo-form');
 
@@ -1146,12 +1623,9 @@
         const submitButton = demoForm.querySelector('button[type="submit"]');
         const statusBox = document.getElementById('form-status');
 
-        // ---- API CONFIG (confirm SUBMIT_URL with your backend team) ----
-         const API_BASE = 'https://campaigns-backend.easyoutdesk.com/api';
-        //const API_BASE = 'http://localhost/campaigns/api';
+        const API_BASE = 'https://campaigns-backend.easyoutdesk.com/api';
         const TOKEN_URL = API_BASE + '/odoo-lead/token';
         const SUBMIT_URL = API_BASE + '/motadata/submit';
-        const THANK_YOU_URL = 'thank-you.php';
 
         const setStatus = (message, type) => {
             if (!statusBox) return;
@@ -1184,7 +1658,6 @@
 
         const NAME_REGEX = /^\p{L}+(?:[\s'\-]\p{L}+)*$/u;
         const COMPANY_REGEX = /^\p{L}[\p{L}\p{N}\s&.,'\-]*$/u;
-        const MESSAGE_REGEX = /^[\p{L}\p{N}\s.,!?'"\-\/():;&]+$/u;
 
         const validateForm = () => {
             clearAllErrors();
@@ -1197,7 +1670,6 @@
             const company = getValue('company_name');
             const solution = getValue('solution');
             const size = getValue('company_size');
-            const message = getValue('message');
 
             if (!name) {
                 showFieldError(getField('full_name'), 'Please enter your name.'); valid = false;
@@ -1233,8 +1705,6 @@
                 showFieldError(getField('company_size'), 'Please select your company size.'); valid = false;
             }
 
-            
-
             return valid;
         };
 
@@ -1268,16 +1738,17 @@
                 submitButton.innerHTML = submitButton.dataset.originalText;
             }
         };
-const showSwalSuccess = (text) =>
-    loadSweetAlert()
-        .then((Swal) => Swal.fire({
-            icon: 'success',
-            title: 'Request Submitted',
-            text: text,
-            confirmButtonText: 'OK',
-            confirmButtonColor: '#ff7a1a'
-        }))
-        .catch(() => setStatus(text, 'success'));
+
+        const showSwalSuccess = (text) =>
+            loadSweetAlert()
+                .then((Swal) => Swal.fire({
+                    icon: 'success',
+                    title: 'Request Submitted',
+                    text: text,
+                    confirmButtonText: 'OK',
+                    confirmButtonColor: '#ff7a1a'
+                }))
+                .catch(() => setStatus(text, 'success'));
 
         const showSwalError = (title, text) =>
             loadSweetAlert()
@@ -1323,14 +1794,13 @@ const showSwalSuccess = (text) =>
                     const data = result.data || {};
 
                     if (result.ok && data.success === true) {
-    demoForm.reset();
-    clearAllErrors();
-    clearStatus();
-    showSwalSuccess(data.message || 'Thank you! Your enquiry has been submitted successfully.');
-    return;
-}
+                        demoForm.reset();
+                        clearAllErrors();
+                        clearStatus();
+                        showSwalSuccess(data.message || 'Thank you! Your enquiry has been submitted successfully.');
+                        return;
+                    }
 
-                    // Map backend field names to this form's field names
                     const errors = data.errors || {};
                     const fieldMap = {
                         name: 'full_name',
@@ -1385,7 +1855,6 @@ const showSwalSuccess = (text) =>
                 clientsTrack.appendChild(clone);
             });
 
-            // Setting this attribute starts the CSS animation (translateX 0 -> -50%)
             clientsTrack.dataset.cloned = 'true';
         };
 
@@ -1405,7 +1874,6 @@ const showSwalSuccess = (text) =>
             cloneClientLogos();
         }
 
-        // Pause on hover / touch
         const toggleSliderPause = (paused) => clientsSlider.classList.toggle('p', paused);
         clientsSlider.addEventListener('mouseenter', () => toggleSliderPause(true));
         clientsSlider.addEventListener('mouseleave', () => toggleSliderPause(false));
@@ -1415,7 +1883,7 @@ const showSwalSuccess = (text) =>
     }
 
     // --------------------------------------------------
-    // 5. THIRD-PARTY SCRIPTS (loaded on first interaction, or 5s after load)
+    // 5. THIRD-PARTY SCRIPTS
     // --------------------------------------------------
     const d = document, w = window;
     let tpDone = false;
