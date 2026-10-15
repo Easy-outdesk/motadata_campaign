@@ -138,7 +138,7 @@
         }
 
         .brand-logo-img {
-            height: 50px;
+            height: 100px;
             width: auto;
             max-width: 250px;
             object-fit: contain;
