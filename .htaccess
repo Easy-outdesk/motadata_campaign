@@ -1,0 +1,241 @@
+# ============================================================================
+# EasyOutdesk - PRODUCTION .htaccess
+# Domain: odoo.easyoutdesk.com
+# Project root is the web document root
+# ============================================================================
+
+
+RewriteEngine On
+
+
+# ----------------------------------------------------------------------------
+# 0. FORCE HTTPS
+# ----------------------------------------------------------------------------
+
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+
+# ----------------------------------------------------------------------------
+# 1. HSTS
+# ----------------------------------------------------------------------------
+#
+# includeSubDomains is intentionally NOT used unless every easyoutdesk.com
+# subdomain is confirmed to support HTTPS. Do NOT enable preload unless the
+# domain meets all HSTS preload requirements.
+# ----------------------------------------------------------------------------
+
+<IfModule mod_headers.c>
+    Header always set Strict-Transport-Security "max-age=31536000"
+</IfModule>
+
+
+# ----------------------------------------------------------------------------
+# 2. Disable directory listing
+# ----------------------------------------------------------------------------
+
+Options -Indexes
+
+
+# ----------------------------------------------------------------------------
+# 3. Disable MultiViews
+# ----------------------------------------------------------------------------
+
+Options -MultiViews
+
+
+# ----------------------------------------------------------------------------
+# 4. Default document
+# ----------------------------------------------------------------------------
+
+DirectoryIndex index.php
+
+
+# ----------------------------------------------------------------------------
+# 5. Protect sensitive files
+# ----------------------------------------------------------------------------
+#
+# [R=404] returns a real 404 status and Apache then serves ErrorDocument 404
+# (/404.php). The old "/404.php [L]" rewrite returned 200 for blocked files.
+# Keep this BEFORE the generic hidden-file rule.
+# ----------------------------------------------------------------------------
+
+RewriteRule ^(?:\.env(?:\..*)?|composer\.(?:json|lock)|package(?:-lock)?\.json|yarn\.lock|phpunit\.xml(?:\.dist)?)$ - [R=404,L,NC]
+
+
+# ----------------------------------------------------------------------------
+# 6. Protect backup / temporary / database / configuration files
+# ----------------------------------------------------------------------------
+
+RewriteRule ^.*\.(?:bak|backup|old|orig|save|swp|tmp|temp|sql|sqlite|db|log|logs|ini|conf|config|dist)$ - [R=404,L,NC]
+
+RewriteRule ^.*(?:_bk|_bak|_old|_backup|_copy)\.php$ - [R=404,L,NC]
+
+
+# ----------------------------------------------------------------------------
+# 7. Protect Git / SVN / Mercurial
+# ----------------------------------------------------------------------------
+
+RewriteRule (^|/)\.git(?:/|$) - [R=404,L,NC]
+
+RewriteRule (^|/)\.svn(?:/|$) - [R=404,L,NC]
+
+RewriteRule (^|/)\.hg(?:/|$) - [R=404,L,NC]
+
+
+# ----------------------------------------------------------------------------
+# 8. Protect hidden files
+# ----------------------------------------------------------------------------
+#
+# Allow .well-known for SSL and certificate validation.
+# ----------------------------------------------------------------------------
+
+RewriteCond %{REQUEST_URI} !^/\.well-known(?:/|$)
+RewriteRule (^|/)\. - [F,L,NC]
+
+
+# ----------------------------------------------------------------------------
+# 9. Protect private/application directories
+# ----------------------------------------------------------------------------
+#
+# These directories should never be directly accessible from the browser.
+# PHP can still include files from them on the server side.
+# ----------------------------------------------------------------------------
+
+RewriteRule ^(?:logs|vendor)(?:/|$) - [R=404,L,NC]
+
+RewriteRule ^(?:config|private|storage|backup|backups|database|includes|src)(?:/|$) - [R=404,L,NC]
+
+
+# ----------------------------------------------------------------------------
+# 10. SECURITY RESPONSE HEADERS
+# ----------------------------------------------------------------------------
+
+<IfModule mod_headers.c>
+
+    # MIME sniffing protection
+    Header always set X-Content-Type-Options "nosniff"
+
+    # Clickjacking protection
+    Header always set X-Frame-Options "SAMEORIGIN"
+
+    # Referrer protection
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+    # Browser feature restrictions
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+
+    # ------------------------------------------------------------------------
+    # Content Security Policy
+    # ------------------------------------------------------------------------
+    #
+    # Dependencies: SweetAlert2 / jsDelivr, Google Fonts, Google Tag Manager,
+    # Google Analytics, Google Ads / DoubleClick, Microsoft Clarity,
+    # Zoho SalesIQ, EasyOutdesk Campaigns Backend.
+    #
+    # worker-src blob: was added because Microsoft Clarity can start
+    # blob-based web workers.
+    #
+    # IMPORTANT: keep only ONE Content-Security-Policy header.
+    # ------------------------------------------------------------------------
+
+    Header always set Content-Security-Policy "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; img-src 'self' data: blob: https:; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net https://*.zohopublic.in https://*.zohopublic.com https://*.zohostatic.in https://*.zohostatic.com https://*.zoho.in https://*.zoho.com https://*.zohocdn.com https://*.zohoassets.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net https://*.zohopublic.in https://*.zohopublic.com https://*.zohostatic.in https://*.zohostatic.com https://*.zoho.in https://*.zoho.com https://*.zohocdn.com https://*.zohoassets.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://www.googletagmanager.com https://tagmanager.google.com https://www.google.com https://*.google.com https://www.googleadservices.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://*.doubleclick.net https://*.g.doubleclick.net https://www.clarity.ms https://*.clarity.ms https://salesiq.zohopublic.in https://salesiq.zohopublic.com https://*.zohopublic.in https://*.zohopublic.com https://*.zohostatic.in https://*.zohostatic.com https://*.zoho.in https://*.zoho.com https://*.zohocdn.com https://*.zohoassets.com; worker-src 'self' blob:; connect-src 'self' https://campaigns-backend.easyoutdesk.com https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://tagmanager.google.com https://www.google.com https://*.google.com https://www.googleadservices.com https://pagead2.googlesyndication.com https://*.doubleclick.net https://*.g.doubleclick.net https://www.clarity.ms https://*.clarity.ms https://*.zohopublic.in https://*.zohopublic.com https://*.zohostatic.in https://*.zohostatic.com https://*.zoho.in https://*.zoho.com https://*.zohocdn.com https://*.zohoassets.com wss://*.zohopublic.in wss://*.zohopublic.com wss://*.zoho.in wss://*.zoho.com; media-src 'self' data: blob: https://*.zohopublic.in https://*.zohopublic.com https://*.zohostatic.in https://*.zohostatic.com https://*.zoho.in https://*.zoho.com https://*.zohocdn.com https://*.zohoassets.com; frame-src 'self' https://www.googletagmanager.com https://www.google.com https://*.google.com https://*.zohopublic.in https://*.zohopublic.com https://*.zohostatic.in https://*.zohostatic.com https://*.zoho.in https://*.zoho.com https://*.zohocdn.com;"
+
+</IfModule>
+
+
+# ----------------------------------------------------------------------------
+# 11. Hide Apache signature
+# ----------------------------------------------------------------------------
+
+ServerSignature Off
+
+
+# ----------------------------------------------------------------------------
+# 12. Custom error pages
+# ----------------------------------------------------------------------------
+
+ErrorDocument 404 /404.php
+
+# 500.php is not currently available. Use Apache's generic 500 response.
+ErrorDocument 500 "Internal Server Error"
+
+
+# ----------------------------------------------------------------------------
+# 13. MIME types
+# ----------------------------------------------------------------------------
+#
+# Makes sure modern formats are served with the right type, so the caching
+# and compression rules below actually match them.
+# ----------------------------------------------------------------------------
+
+<IfModule mod_mime.c>
+    AddType image/webp .webp
+    AddType font/woff2 .woff2
+    AddType font/woff .woff
+    AddType image/svg+xml .svg
+</IfModule>
+
+
+# ----------------------------------------------------------------------------
+# 14. Static asset caching (single merged block)
+# ----------------------------------------------------------------------------
+#
+# Images and fonts are cached for 1 year and marked immutable. If you replace
+# an image, give it a new file name (for example logo.v2.webp), otherwise
+# returning visitors keep the old copy.
+#
+# PHP pages (index.php, thank-you.php, ...) are NOT cached by these rules.
+# ----------------------------------------------------------------------------
+
+<IfModule mod_expires.c>
+
+    ExpiresActive On
+
+    # Images
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 year"
+    ExpiresByType image/vnd.microsoft.icon "access plus 1 year"
+
+    # CSS
+    ExpiresByType text/css "access plus 1 month"
+
+    # JavaScript
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType text/javascript "access plus 1 month"
+
+    # Fonts
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+
+</IfModule>
+
+<IfModule mod_headers.c>
+    <FilesMatch "\.(?:webp|png|jpe?g|gif|svg|ico|woff2?)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+</IfModule>
+
+
+# ----------------------------------------------------------------------------
+# 15. Compression (single merged block)
+# ----------------------------------------------------------------------------
+
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE text/javascript
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/json
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# ============================================================================
+# END EasyOutdesk PRODUCTION .htaccess
+# ============================================================================
