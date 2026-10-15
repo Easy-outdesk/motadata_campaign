@@ -1026,7 +1026,7 @@
         <div class="wrap header-inner">
             <a class="brand" href="#top" aria-label="Easy Outdesk and Motadata home">
                 <!-- Increased logo size -->
-                <img src="assets/images/motadata_eod.png" alt="Easy Outdesk and Motadata" class="brand-logo-img">
+                <img src="assets/images/MotadataxEasyoutdesk_Logo.svg" alt="Easy Outdesk and Motadata" class="brand-logo-img">
             </a>
             <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav"
                 aria-label="Open navigation">☰</button>
