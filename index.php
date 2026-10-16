@@ -2557,7 +2557,7 @@
 
                                     
                                 </div>
-                                <div class="featured-sub">Motadata with Easy Outdesk</div>
+                                <!-- <div class="featured-sub">Motadata with Easy Outdesk</div> -->
                             </div>
 
                             <!-- Row 1: Operations -->
