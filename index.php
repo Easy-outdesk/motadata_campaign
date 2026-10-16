@@ -614,7 +614,7 @@
             padding: 20px 0
         }
 
-        .sol-visual:before {
+        /* .sol-visual:before {
             content: "";
             position: absolute;
             top: -64px;
@@ -623,8 +623,8 @@
             height: 190px;
             border-radius: 50%;
             background: var(--c1)
-        }
-
+        } */
+/* 
         .sol-visual:after {
             content: "";
             position: absolute;
@@ -634,7 +634,7 @@
             width: 45%;
             border-radius: 30px;
             background: var(--c2)
-        }
+        } */
 
         .sol-visual img {
             position: relative;
